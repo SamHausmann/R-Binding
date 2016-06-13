@@ -8,8 +8,9 @@ option_list = list( make_option(c("-k", "--key"), action="store", default=NA, ty
 opt_parser = OptionParser(option_list=option_list)
 opt = parse_args(opt_parser)
 
+language_data = "Por favor Señorita, says the man."
 key <- "content"
-value <- "Por favor Señorita, says the man."
+value <- language_data
 headers <- c("X-RosetteAPI-App" = "r-application-test")
 
 parameters <- list()
