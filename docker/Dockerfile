@@ -1,22 +1,17 @@
 
-FROM r-base:3.2.5
+FROM rosetteapi/docker-base-image:latest
 MAINTAINER Sam Hausmann
+ENV LANGUAGE=r
 
 ENV API_KEY api_key
 RUN apt-get -y update && apt-get install -y \
-    curl \
     r-base \
     r-base-dev \
     libcurl4-openssl-dev \
     r-cran-rjson \
-    libssl-dev
+    libssl-dev \
+    r-cran-testthat
 
-RUN mkdir /R-dev
-COPY runAll.sh /R-dev/runAll.sh
-RUN chmod 0755 /R-dev/runAll.sh
+RUN mkdir /test-dev/tests
 
-#set the working directory
-WORKDIR /R-dev
-
-CMD ./runAll.sh 
-VOLUME ["/source"]
+CMD ./docker-entrypoint.sh $API_KEY $FILENAME $ALT_URL $GIT_USERNAME $VERSION $LANGUAGE; /bin/bash
