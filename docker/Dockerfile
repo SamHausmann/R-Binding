@@ -1,5 +1,5 @@
 
-FROM rosetteapi/docker-base-image:latest
+FROM rosetteapi/docker-base-layer:latest
 MAINTAINER Sam Hausmann
 ENV LANGUAGE=r
 
